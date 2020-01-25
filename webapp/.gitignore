@@ -1,0 +1,6 @@
+__pycache__/
+env/
+*.log
+config.py
+*.bat
+*.db

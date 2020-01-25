@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <link href="img/logo/logo.jpg" rel="icon"> <!картинка не работает>
+      {% if page_title %}
+      <title>АСР - {{ page_title }}. Автоматическая система расчета </title>
+      {% else %}
+      <title>Автоматическая система расчета параметров настройки устройств РЗиА</title>
+      {% endif %}
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+     <script src="https://kit.fontawesome.com/7d33e6861a.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="bg-light">
+
+ {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <div class="alert alert-danger">
+            <li>{{ message }}</li>
+            </div>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+<div class="row justify-content-center align-items-center bg-light m-5">
+    <form class="col-sm-8 " action="{{ url_for('user.process_reg') }}" method="post" novalidate>
+     <h3>Регистрация</h3>
+         {{ form.hidden_tag() }}
+          <div class="row">
+    <div class="col-6 bg-white">
+       <div class="form-group">
+            {{ form.username.label }}
+            {{ form.username(size=32) }}
+
+        </div>
+               <div class="form-group">
+            {{ form.mail.label }}
+            {{ form.mail(size=32) }}
+
+        </div>
+        
+   <div class="form-group">
+            {{ form.password1.label }}
+            {{ form.password1(size=32) }}
+
+        </div>
+        
+       <div class="form-group">
+            {{ form.password2.label }}
+            {{ form.password2(size=32) }}
+        </div>
+           <div class="form-group">
+            {% for subfield in form.radio %}
+            <tr>
+                <td> {{ form.role.label }}</td>
+                <td> {{ form.role }} </td>
+            </tr>
+            {% endfor %}
+           </div>
+          {{ form.submit() }}
+        </div>
+ <div class="col-6">
+                          <div class="form-group">
+            {{ form.first_name.label }}
+            {{ form.first_name(size=30) }}
+
+        </div>
+        <div class="form-group">
+            {{ form.second_name.label }}
+            {{ form.second_name(size=30) }}
+
+        </div>
+        <div class="form-group">
+            {{ form.father_name.label }}
+            {{ form.father_name(size=30) }}
+
+        </div>
+             <div class="form-group">
+            {{ form.phone_number.label }}
+            {{ form.phone_number(size=30) }}
+
+        </div>
+                <div class="form-group">
+            {{ form.organisation.label }}
+            {{ form.organisation(size=30) }}
+
+        </div>
+              </div>
+        </div>
+
+
+    </form>
+</div>
+
+    </body>
+</html>
